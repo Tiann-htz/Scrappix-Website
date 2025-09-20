@@ -15,9 +15,11 @@ import {
   Smartphone,
   Star
 } from 'lucide-react';
+import LearnMoreModal from '../components/LearnMoreModal';
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState({});
+  const [showLearnMore, setShowLearnMore] = useState(false);
 
   const handleDownload = () => {
     const downloadUrl = 'https://drive.google.com/uc?export=download&id=15uhQtHCAaGSsxlL3M_zpU0L3ebTvAO45';
@@ -97,24 +99,24 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 w-full overflow-x-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-green-100 z-50">
-        <div className="max-w-6xl mx-auto px-4 py-3">
+        <div className="w-full max-w-6xl mx-auto px-3 sm:px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <Image
                 src="/Logo/scrappix_logo.png"
                 alt="Scrappix Logo"
-                width={40}
-                height={40}
-                className="rounded-lg"
+                width={32}
+                height={32}
+                className="rounded-lg sm:w-10 sm:h-10"
               />
-              <span className="text-xl font-bold text-green-800">Scrappix</span>
+              <span className="text-lg sm:text-xl font-bold text-green-800">Scrappix</span>
             </div>
             <button 
               onClick={handleDownload}
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105"
+              className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 sm:px-6 text-sm sm:text-base rounded-full transition-all duration-300 transform hover:scale-105"
             >
               Download App
             </button>
@@ -123,30 +125,33 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+      <section className="pt-20 pb-12 sm:pb-16 px-3 sm:px-4 w-full">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div 
               data-animate 
               className={`transform transition-all duration-1000 ${
                 isVisible[0] ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'
               }`}
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-green-800 leading-tight mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-green-800 leading-tight mb-4 sm:mb-6">
                 Turn Trash Into
                 <span className="text-green-600 block">Treasure</span>
               </h1>
-              <p className="text-lg text-green-700 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-green-700 mb-6 sm:mb-8 leading-relaxed">
                 Scrappix helps Filipino households identify recyclable materials and transform them into useful products through AI-powered scanning and creative tutorials.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <button 
                   onClick={handleDownload}
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
                 >
                   Download Now
                 </button>
-                <button className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300">
+                <button 
+                  onClick={() => setShowLearnMore(true)}
+                  className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 w-full sm:w-auto"
+                >
                   Learn More
                 </button>
               </div>
@@ -157,18 +162,18 @@ export default function Home() {
                 isVisible[0] ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
               }`}
             >
-              <div className="relative">
-                <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-3xl p-8 shadow-2xl">
-                  <Smartphone className="w-48 h-80 mx-auto text-white/20" />
+              <div className="relative max-w-sm mx-auto md:max-w-none">
+                <div className="bg-gradient-to-br from-green-400 to-emerald-500 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                  <Smartphone className="w-32 h-48 sm:w-48 sm:h-80 mx-auto text-white/20" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                      <Camera className="w-12 h-12 text-white mx-auto mb-4" />
-                      <p className="text-white font-semibold">AI-Powered Recognition</p>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 text-center">
+                      <Camera className="w-8 h-8 sm:w-12 sm:h-12 text-white mx-auto mb-2 sm:mb-4" />
+                      <p className="text-white font-semibold text-sm sm:text-base">AI-Powered Recognition</p>
                     </div>
                   </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 bg-white rounded-full p-4 shadow-lg">
-                  <Leaf className="w-8 h-8 text-green-600" />
+                <div className="absolute -bottom-4 -right-4 bg-white rounded-full p-3 sm:p-4 shadow-lg">
+                  <Leaf className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
                 </div>
               </div>
             </div>
@@ -177,39 +182,39 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-12 sm:py-16 bg-white w-full">
+        <div className="w-full max-w-6xl mx-auto px-3 sm:px-4">
           <div 
             data-animate 
-            className={`text-center mb-16 transform transition-all duration-1000 ${
+            className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${
               isVisible[1] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-green-800 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-green-800 mb-4">
               Powerful Features
             </h2>
-            <p className="text-lg text-green-700 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-green-700 max-w-2xl mx-auto px-4">
               Everything you need to start your sustainable journey
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
                 data-animate
-                className={`group bg-green-50 hover:bg-green-100 rounded-2xl p-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg ${
+                className={`group bg-green-50 hover:bg-green-100 rounded-2xl p-4 sm:p-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg ${
                   isVisible[index + 2] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="bg-green-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-green-700 transition-colors">
-                  <feature.icon className="w-6 h-6 text-white" />
+                <div className="bg-green-600 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-green-700 transition-colors">
+                  <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-green-800 mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-green-800 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-green-700">
+                <p className="text-sm sm:text-base text-green-700">
                   {feature.description}
                 </p>
               </div>
@@ -219,23 +224,23 @@ export default function Home() {
       </section>
 
       {/* Environmental Impact */}
-      <section className="py-16 bg-gradient-to-br from-green-100 to-emerald-100">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-green-100 to-emerald-100 w-full">
+        <div className="w-full max-w-6xl mx-auto px-3 sm:px-4">
           <div 
             data-animate 
-            className={`text-center mb-16 transform transition-all duration-1000 ${
+            className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${
               isVisible[7] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-green-800 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-green-800 mb-4">
               Make a Difference
             </h2>
-            <p className="text-lg text-green-700 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-green-700 max-w-3xl mx-auto px-4">
               Join thousands of Filipinos creating positive environmental impact through sustainable practices
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 mb-12">
             {impacts.map((impact, index) => (
               <div
                 key={index}
@@ -245,13 +250,13 @@ export default function Home() {
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <impact.icon className="w-8 h-8 text-green-600" />
+                <div className="bg-white w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <impact.icon className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-bold text-green-800 mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-green-800 mb-2">
                   {impact.title}
                 </h3>
-                <p className="text-green-700">
+                <p className="text-sm sm:text-base text-green-700 px-2">
                   {impact.description}
                 </p>
               </div>
@@ -261,23 +266,23 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
+      <section className="py-12 sm:py-16 bg-white w-full">
+        <div className="w-full max-w-6xl mx-auto px-3 sm:px-4">
           <div 
             data-animate 
-            className={`text-center mb-16 transform transition-all duration-1000 ${
+            className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${
               isVisible[12] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-green-800 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-green-800 mb-4">
               How It Works
             </h2>
-            <p className="text-lg text-green-700">
+            <p className="text-base sm:text-lg text-green-700">
               Get started in three simple steps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 step: "01",
@@ -298,18 +303,18 @@ export default function Home() {
               <div
                 key={index}
                 data-animate
-                className={`text-center transform transition-all duration-1000 ${
+                className={`text-center transform transition-all duration-1000 px-2 ${
                   isVisible[index + 13] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className="bg-green-600 text-white text-xl font-bold w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-green-600 text-white text-lg sm:text-xl font-bold w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                   {step.step}
                 </div>
-                <h3 className="text-xl font-bold text-green-800 mb-4">
+                <h3 className="text-lg sm:text-xl font-bold text-green-800 mb-4">
                   {step.title}
                 </h3>
-                <p className="text-green-700">
+                <p className="text-sm sm:text-base text-green-700">
                   {step.description}
                 </p>
               </div>
@@ -319,31 +324,31 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-green-800 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
+      <footer className="bg-green-800 text-white py-8 sm:py-12 w-full">
+        <div className="w-full max-w-6xl mx-auto px-3 sm:px-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <div>
-              <div className="flex items-center space-x-3 mb-4">
+              <div className="flex items-center space-x-2 sm:space-x-3 mb-4">
                 <Image
                   src="/Logo/scrappix_logo.png"
                   alt="Scrappix Logo"
-                  width={32}
-                  height={32}
-                  className="rounded-lg"
+                  width={28}
+                  height={28}
+                  className="rounded-lg sm:w-8 sm:h-8"
                 />
-                <span className="text-xl font-bold">Scrappix</span>
+                <span className="text-lg sm:text-xl font-bold">Scrappix</span>
               </div>
-              <p className="text-green-200 mb-4">
+              <p className="text-green-200 mb-4 text-sm sm:text-base">
                 AI-powered recycling and repurposing for sustainable Filipino households.
               </p>
-              <p className="text-green-300 text-sm">
+              <p className="text-green-300 text-xs sm:text-sm">
                 Version 1.0
               </p>
             </div>
             
             <div>
-              <h4 className="text-lg font-bold mb-4">Features</h4>
-              <ul className="space-y-2 text-green-200">
+              <h4 className="text-base sm:text-lg font-bold mb-4">Features</h4>
+              <ul className="space-y-2 text-green-200 text-sm sm:text-base">
                 <li>AI Material Scanning</li>
                 <li>Tutorial Library</li>
                 <li>Community Marketplace</li>
@@ -351,24 +356,30 @@ export default function Home() {
               </ul>
             </div>
             
-            <div>
-              <h4 className="text-lg font-bold mb-4">Contact</h4>
-              <p className="text-green-200 mb-2">
+            <div className="sm:col-span-2 lg:col-span-1">
+              <h4 className="text-base sm:text-lg font-bold mb-4">Contact</h4>
+              <p className="text-green-200 mb-2 text-sm sm:text-base">
                 Email: scrappix01@gmail.com
               </p>
-              <p className="text-green-300 text-sm">
+              <p className="text-green-300 text-xs sm:text-sm">
                 We'd love to hear from you! Share your feedback and success stories.
               </p>
             </div>
           </div>
           
-          <div className="border-t border-green-700 mt-8 pt-8 text-center">
-            <p className="text-green-300">
+          <div className="border-t border-green-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
+            <p className="text-green-300 text-xs sm:text-sm px-4">
               © 2024 Scrappix. Developed with passion for environmental conservation.
             </p>
           </div>
         </div>
       </footer>
+
+      {/* Learn More Modal */}
+      <LearnMoreModal 
+        isOpen={showLearnMore} 
+        onClose={() => setShowLearnMore(false)} 
+      />
     </div>
   );
 }
