@@ -330,7 +330,7 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-2 sm:space-x-3 mb-4">
                 <Image
-                  src="/Logo/scrappix_logo.png"
+                  src="/Logo/ic_scrappix_circle.webp"
                   alt="Scrappix Logo"
                   width={28}
                   height={28}
@@ -369,7 +369,7 @@ export default function Home() {
           
           <div className="border-t border-green-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center">
             <p className="text-green-300 text-xs sm:text-sm px-4">
-              © 2024 Scrappix. Developed with passion for environmental conservation.
+              © 2025 Scrappix. Developed with passion for environmental conservation.
             </p>
           </div>
         </div>
