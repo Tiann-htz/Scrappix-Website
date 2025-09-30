@@ -22,7 +22,7 @@ export default function Home() {
   const [showLearnMore, setShowLearnMore] = useState(false);
 
   const handleDownload = () => {
-    const downloadUrl = 'https://drive.google.com/uc?export=download&id=15uhQtHCAaGSsxlL3M_zpU0L3ebTvAO45';
+    const downloadUrl = 'https://drive.google.com/file/d/1G_n93LmQs5ThTfZJeBL39jNhhIWy9YwP/view';
     const link = document.createElement('a');
     link.href = downloadUrl;
     link.download = 'Scrappix.apk';
